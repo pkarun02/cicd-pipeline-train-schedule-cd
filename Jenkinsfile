@@ -13,7 +13,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'KEY')]) {
+                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'KEYS')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
@@ -22,7 +22,7 @@ pipeline {
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: "$USERNAME",
-                                    key: "$KEY"
+                                    key: "$KEYS"
                                 ], 
                                 transfers: [
                                     sshTransfer(
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 input 'Does the staging environment look OK?'
                 milestone(1)
-                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'KEY')]) {
+                withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'KEYS')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
@@ -54,7 +54,7 @@ pipeline {
                                 configName: 'production',
                                 sshCredentials: [
                                     username: "$USERNAME",
-                                    key: "$KEY"
+                                    key: "$KEYS"
                                 ], 
                                 transfers: [
                                     sshTransfer(
