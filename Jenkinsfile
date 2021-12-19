@@ -19,7 +19,8 @@ pipeline {
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'DockerHost',
+                                sh 'echo $USERNAME'
+                                configName: 'DockerHost',                                
                                 sshCredentials: [
                                     usernameVariable: "$USERNAME",
                                     keyFileVariable: "$KEY"
