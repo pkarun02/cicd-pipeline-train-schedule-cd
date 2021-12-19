@@ -18,13 +18,12 @@ pipeline {
                         failOnError: true,
                         continueOnError: false,
                         publishers: [
-                            sshPublisherDesc(
-                                sh 'echo $USERNAME'
+                            sshPublisherDesc(                                
                                 configName: 'DockerHost',                                
                                 sshCredentials: [
                                     usernameVariable: "$USERNAME",
                                     keyFileVariable: "$KEY"
-                                ], 
+                                ], sh 'echo $USERNAME'
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
