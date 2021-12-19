@@ -23,7 +23,7 @@ pipeline {
                                 sshCredentials: [
                                     usernameVariable: "$USERNAME",
                                     keyFileVariable: "$KEY"
-                                ], sh 'echo $USERNAME'
+                                ], 
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
