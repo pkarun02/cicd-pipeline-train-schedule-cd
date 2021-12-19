@@ -19,7 +19,7 @@ pipeline {
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'staging',
+                                configName: 'DockerHost',
                                 sshCredentials: [
                                     usernameVariable: "$USERNAME",
                                     keyFileVariable: "$KEY"
@@ -51,7 +51,7 @@ pipeline {
                         continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
-                                configName: 'production',
+                                configName: 'ProdServer',
                                 sshCredentials: [
                                     usernameVariable: "$USERNAME",
                                     keyFileVariable: "$KEY"
